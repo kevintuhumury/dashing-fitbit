@@ -1,4 +1,4 @@
-# Fitbit Dashing widget for FITBIT®
+# Dashing widget for FITBIT®
 
 Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [Fitgem](https://github.com/whazzmaster/fitgem) gem to retrieve information from the [Fitbit API](https://dev.fitbit.com/).
 
