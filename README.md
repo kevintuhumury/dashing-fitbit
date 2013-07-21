@@ -24,23 +24,23 @@ To actually use the widget on your own Dashboard, you'll have to [request](https
       consumer_secret: "YOUR_SECRET"
   ```
 
-2. Copy the `/lib/fitbit_credentials.rb` file into the root of your Dashboard and enable it for execution by running the following on the command line:
+2. Copy the `/lib/fitbit_authorizer.rb` file into the root of your Dashboard and enable it for execution by running the following on the command line:
 
   ```bash
-  chmod +x fitbit_credentials.rb
+  chmod +x fitbit_authorizer.rb
   ```
 
 3. Now call that script by entering the following on the command line:
 
   ```bash
-  ./fitbit_credentials.rb
+  ./fitbit_authorizer.rb
   ```
 
   The script will ask you to copy and paste the shown URL into your browser. You'll have to login to Fitbit.com and authorize this widget to access your data. Once you've done that, you'll receive a PIN code from Fitbit which needs to be copied and pasted back on the command line.
 
   After pasting that code and hitting `<Enter>` the script will add a `token`, `secret` and `user_id` to the `.fitbit.yml` file.
 
-  The above should only be done once, so basically you could now remove the `fitbit_credentials.rb` file and move on to the next section (Usage). Just make sure the `.fitbit.yml` file looks something like the following:
+  The above should only be done once, so basically you could now remove the `fitbit_authorizer.rb` file and move on to the next section (Usage). Just make sure the `.fitbit.yml` file looks something like the following:
 
   ```yaml
   oauth:
