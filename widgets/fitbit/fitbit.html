@@ -1,10 +1,10 @@
 <h1 class="title"><span>Fitbit</span></h1>
-<p class="device">
-  <span data-bind="device.version" class="version"></span>
-  <span data-bind="device.last_sync" class="sync"></span>
-  <span data-bind-class="device.battery | prepend 'battery-' | downcase">&nbsp;</span>
-</p>
-<ul>
+<ul class="device">
+  <li data-bind="device.version" class="version"></ul>
+  <li data-bind="device.last_sync" class="sync"></ul>
+  <li data-bind-class="device.battery | prepend 'battery-' | downcase">&nbsp;</ul>
+</ul>
+<ul class="views">
   <li class="steps">
     <h2 data-bind="steps.today"></h2>
     <h3>steps</h3>
