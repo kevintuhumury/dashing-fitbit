@@ -10,7 +10,23 @@ Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [
 gem "fitgem"
 ```
 
-and run `bundle install`.
+This widget has been [Haml](http://haml.info/)ified (we're using a HAML template in the `/widgets/fitbit` directory instead of an HTML template), so besides the above you'll also need to add `haml` to the Gemfile (if you haven't already):
+
+```ruby
+gem "haml"
+```
+
+and require it in your `config.ru` file right below the require of dashing itself. So the first few lines of your `config.ru` should look something like the following:
+
+```ruby
+require 'dashing'
+require 'haml'
+
+configure do
+...
+```
+
+Now run `bundle install`.
 
 ## Authorization
 
@@ -53,7 +69,7 @@ To actually use the widget on your own Dashboard, you'll have to [request](https
 
 ## Usage
 
-To use this widget, copy `fitbit.coffee`, `fitbit.html` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy both `fitbit.png` and `fitbit-icons.png` to the `/assets/images` directory, put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
+To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy both `fitbit.png` and `fitbit-icons.png` to the `/assets/images` directory, put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
 
 To include the widget on your dashboard, add the following snippet to the dashboard layout file:
 
@@ -61,6 +77,12 @@ To include the widget on your dashboard, add the following snippet to the dashbo
 <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
   <div data-id="fitbit" data-view="Fitbit"></div>
 </li>
+```
+When you're using a Hamlified dashboard layout (hey, you're already using a Hamlified widget, so why not Hamlify your dashboard layout?), you could also do the following:
+
+```ruby
+%li(data-row="1" data-col="1" data-sizex="1" data-sizey="1")
+  %div(data-id="fitbit" data-view="Fitbit")
 ```
 
 Now, if you haven't already, authorize the widget over at the Fitbit website as described above. Once that's done, you should be able to start using it!
