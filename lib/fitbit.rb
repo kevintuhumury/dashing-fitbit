@@ -48,6 +48,14 @@ class Fitbit
     }
   end
 
+  def errors?
+    client.devices.is_a?(Hash) && client.devices.has_key?("errors")
+  end
+
+  def error
+    client.devices["errors"].first["message"]
+  end
+
   private
 
   def current_device
