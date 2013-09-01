@@ -1,43 +1,48 @@
 %h1(class="title")
   %span Fitbit
 
-%ul(class="device")
-  %li(data-bind="device.version" class="version")
-  %li(data-bind="device.last_sync" class="sync")
-  %li(data-bind-class="device.battery | prepend 'battery-' | downcase") &nbsp;
+%span(id="data")
+  %ul(class="device")
+    %li(data-bind="device.version" class="version")
+    %li(data-bind="device.last_sync" class="sync")
+    %li(data-bind-class="device.battery | prepend 'battery-' | downcase") &nbsp;
 
-%ul(class="views")
-  %li(class="steps")
-    %h2(data-bind="steps.today")
-    %h3 steps
-    %h4(databind="steps.goal | append '% of goal'")
+  %ul(class="views")
+    %li(class="steps")
+      %h2(data-bind="steps.today")
+      %h3 steps
+      %h4(databind="steps.goal | append '% of goal'")
 
-  %li(class="steps_total")
-    %h2(data-bind="steps.total | shortenedNumber")
-    %h3 lifetime steps
+    %li(class="steps_total")
+      %h2(data-bind="steps.total | shortenedNumber")
+      %h3 lifetime steps
 
-  %li(class="calories")
-    %h2(data-bind="calories.today")
-    %h3 calories
-    %h4(data-bind="calories.goal | append '% of goal'")
+    %li(class="calories")
+      %h2(data-bind="calories.today")
+      %h3 calories
+      %h4(data-bind="calories.goal | append '% of goal'")
 
-  %li(class="distance")
-    %h2
-      %span(data-bind="distance.today")
-      %span(data-bind="distance.unit" class="unit")
+    %li(class="distance")
+      %h2
+        %span(data-bind="distance.today")
+        %span(data-bind="distance.unit" class="unit")
 
-    %h3 distance
-    %h4(data-bind="distance.goal | append '% of goal'")
+      %h3 distance
+      %h4(data-bind="distance.goal | append '% of goal'")
 
-  %li(class="distance_total")
-    %h2
-      %span(data-bind="distance.total")
-      %span(data-bind="distance.unit" class="unit")
+    %li(class="distance_total")
+      %h2
+        %span(data-bind="distance.total")
+        %span(data-bind="distance.unit" class="unit")
 
-    %h3 lifetime distance
+      %h3 lifetime distance
 
-  %li(class="very_active")
-    %h2(data-bind="active.very")
-    %h3 very active minutes
+    %li(class="very_active")
+      %h2(data-bind="active.very")
+      %h3 very active minutes
+
+%span(id="error")
+  %h2 Uh Oh.
+  %p(data-bind="error")
 
 %p(class="updated-at" data-bind="updatedAtMessage")

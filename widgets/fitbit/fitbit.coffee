@@ -1,11 +1,35 @@
 class Dashing.Fitbit extends Dashing.Widget
 
   ready: ->
-    @firstView().fadeIn()
-    @startAnimation()
+    @visible = true
+    @determineView()
 
   onData: (data) ->
-    @index = 0
+    if @index
+      @currentView(@index).fadeOut()
+
+    if @interval
+      clearInterval @interval
+
+    if data.error
+      @error = data.error
+    else
+      @error = null
+      @index = 0
+
+    @determineView() if @visible
+
+  determineView: ->
+    if @error
+      @dataView().hide()
+      @errorView().show()
+    else
+      @errorView().hide()
+      @dataView().show()
+
+      @firstView().fadeIn()
+      @startAnimation()
+
   startAnimation: ->
     @interval = setInterval @animateView, 6000
 
@@ -34,3 +58,9 @@ class Dashing.Fitbit extends Dashing.Widget
 
   views: ->
     $(@node).find(".views li")
+
+  dataView: ->
+    $(@node).find("#data")
+
+  errorView: ->
+    $(@node).find("#error")
