@@ -5,11 +5,8 @@ class Dashing.Fitbit extends Dashing.Widget
     @determineView()
 
   onData: (data) ->
-    if @index
-      @currentView(@index).fadeOut()
-
-    if @interval
-      clearInterval @interval
+    @currentView(@index).fadeOut() if @index
+    clearInterval @interval if @interval
 
     if data.error
       @error = data.error
