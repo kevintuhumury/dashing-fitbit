@@ -24,7 +24,7 @@ class Dashing.Fitbit extends Dashing.Widget
       @errorView().hide()
       @dataView().show()
 
-      @firstView().fadeIn()
+      @firstView().fadeIn @animationLength()
       @startAnimation()
 
   startAnimation: ->
@@ -34,11 +34,11 @@ class Dashing.Fitbit extends Dashing.Widget
     @hideCurrentView() and @showNextView()
 
   hideCurrentView: ->
-    @currentView(@index).fadeOut()
+    @currentView(@index).fadeOut @animationLength()
 
   showNextView: ->
     @findNextIndex()
-    @currentView(@index).fadeIn()
+    @currentView(@index).fadeIn @animationLength()
 
   findNextIndex: ->
     @index = (@index + 1)
@@ -61,3 +61,6 @@ class Dashing.Fitbit extends Dashing.Widget
 
   errorView: ->
     $(@node).find("#error")
+
+  animationLength: ->
+    1000
