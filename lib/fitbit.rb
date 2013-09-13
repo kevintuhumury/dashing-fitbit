@@ -19,34 +19,38 @@ class Fitbit
   end
 
   def steps
-    {
+    steps = {
       today: summary["steps"],
       total: total["steps"],
       goal:  percentage(summary["steps"].to_i, goals["steps"].to_i)
     }
+    steps.merge meter: meter(steps[:goal])
   end
 
   def calories
-    {
+    calories = {
       today: summary["caloriesOut"],
       goal:  percentage(summary["caloriesOut"], goals["caloriesOut"])
     }
+    calories.merge meter: meter(calories[:goal])
   end
 
   def distance
-    {
+    distance = {
       today: distance_today,
       goal:  percentage(distance_today.to_f, goals["distance"].to_f).to_i,
       total: total["distance"],
       unit:  distance_unit
     }
+    distance.merge meter: meter(distance[:goal])
   end
 
   def active
-    {
+    active = {
       today: summary["veryActiveMinutes"],
       goal: percentage(summary["veryActiveMinutes"], goals["activeMinutes"])
     }
+    active.merge meter: meter(active[:goal])
   end
 
   def errors?
@@ -89,6 +93,10 @@ class Fitbit
 
   def percentage(current, total)
     (current.to_f / (total.to_f / 100)).to_i
+  end
+
+  def meter(percentage)
+    percentage > 100 ? 100 : percentage
   end
 
 end
