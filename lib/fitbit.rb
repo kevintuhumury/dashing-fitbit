@@ -44,7 +44,8 @@ class Fitbit
 
   def active
     {
-      very: summary["veryActiveMinutes"]
+      today: summary["veryActiveMinutes"],
+      goal: percentage(summary["veryActiveMinutes"], goals["activeMinutes"])
     }
   end
 
