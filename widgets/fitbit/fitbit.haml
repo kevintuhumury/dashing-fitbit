@@ -9,6 +9,8 @@
 
   %ul(class="views")
     %li(class="steps")
+      %input(class="meter" data-bind-value="steps.meter")
+      %span(class="icon")
       %h2(data-bind="steps.today")
       %h3 steps
       %h4(data-bind="steps.goal | append '% of goal'")
@@ -18,11 +20,15 @@
       %h3 lifetime steps
 
     %li(class="calories")
+      %input(class="meter" data-bind-value="calories.meter")
+      %span(class="icon")
       %h2(data-bind="calories.today")
       %h3 calories
       %h4(data-bind="calories.goal | append '% of goal'")
 
     %li(class="distance")
+      %input(class="meter" data-bind-value="distance.meter")
+      %span(class="icon")
       %h2
         %span(data-bind="distance.today")
         %span(data-bind="distance.unit" class="unit")
@@ -37,7 +43,9 @@
 
       %h3 lifetime distance
 
-    %li(class="very_active")
+    %li(class="active")
+      %input(class="meter" data-bind-value="active.meter")
+      %span(class="icon")
       %h2(data-bind="active.today")
       %h3 very active minutes
       %h4(data-bind="active.goal | append '% of goal'")
