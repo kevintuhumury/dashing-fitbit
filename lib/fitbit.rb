@@ -83,7 +83,7 @@ class Fitbit
   end
 
   def goals
-    today["goals"]
+    client.goals["goals"]
   end
 
   def percentage(current, total)
