@@ -69,7 +69,7 @@ To actually use the widget on your own Dashboard, you'll have to [request](https
 
 ## Usage
 
-To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy both `fitbit.png` and `fitbit-icons.png` to the `/assets/images` directory, put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
+To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy the `fitbit.png`, `fitbit-icons.png`, `active.png`, `distance.png`, `calories.png` and `steps.png` images to the `/assets/images/fitbit` directory. Put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
 
 To include the widget on your dashboard, add the following snippet to the dashboard layout file:
 
