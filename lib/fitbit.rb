@@ -87,7 +87,7 @@ class Fitbit
   end
 
   def percentage(current, total)
-    current / (total / 100)
+    (current.to_f / (total.to_f / 100)).to_i
   end
 
 end
