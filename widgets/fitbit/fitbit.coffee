@@ -3,6 +3,7 @@ class Dashing.Fitbit extends Dashing.Widget
   ready: ->
     @visible = true
     @determineView()
+    @transformMeters()
 
   onData: (data) ->
     @currentView(@index).fadeOut() if @index
@@ -15,6 +16,19 @@ class Dashing.Fitbit extends Dashing.Widget
       @index = 0
 
     @determineView() if @visible
+
+  transformMeters: ->
+    meter = $(@node).find(".meter")
+    meter.attr "data-bgcolor", "#16b5b5"
+    meter.attr "data-fgcolor", "#fff"
+    meter.attr "data-width", "125"
+    meter.attr "data-height", "120"
+    meter.attr "data-thickness", ".3"
+    meter.attr "data-angleArc", "250"
+    meter.attr "data-angleOffset", "-125"
+    meter.attr "data-displayInput", "false"
+    meter.attr "data-readOnly", "true"
+    meter.knob()
 
   determineView: ->
     if @error
