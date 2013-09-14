@@ -8,7 +8,7 @@
     %li(data-bind-class="device.battery | prepend 'battery-' | downcase") &nbsp;
 
   %ul(class="views")
-    %li(class="steps")
+    %li(data-bind-class="steps.intensity_class | prepend 'steps '")
       %input(class="meter" data-bind-value="steps.meter")
       %span(class="icon")
       %h2(data-bind="steps.today")
@@ -19,14 +19,14 @@
       %h2(data-bind="steps.total | shortenedNumber")
       %h3 lifetime steps
 
-    %li(class="calories")
+    %li(data-bind-class="calories.intensity_class | prepend 'calories '")
       %input(class="meter" data-bind-value="calories.meter")
       %span(class="icon")
       %h2(data-bind="calories.today")
       %h3 calories
       %h4(data-bind="calories.goal | append '% of goal'")
 
-    %li(class="distance")
+    %li(data-bind-class="distance.intensity_class | prepend 'distance '")
       %input(class="meter" data-bind-value="distance.meter")
       %span(class="icon")
       %h2
@@ -43,7 +43,7 @@
 
       %h3 lifetime distance
 
-    %li(class="active")
+    %li(data-bind-class="active.intensity_class | prepend 'active '")
       %input(class="meter" data-bind-value="active.meter")
       %span(class="icon")
       %h2(data-bind="active.today")

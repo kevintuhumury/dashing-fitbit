@@ -1,4 +1,8 @@
 $background-color: #15aaaa
+$intensity_none: lighten($background-color, 10%)
+$intensity_light: #ff6d43
+$intensity_moderate: #ffc807
+$intensity_high: #9ade11
 
 .widget-fitbit
   position: relative
@@ -63,10 +67,6 @@ $background-color: #15aaaa
 
         &.steps, &.calories, &.distance, &.active
 
-          input
-            background-color: darken($background-color, 2%)
-            color: #fff
-
           h2
             position: absolute
             top: 105px
@@ -93,7 +93,6 @@ $background-color: #15aaaa
             display: block
             width: 60px
             height: 60px
-            background-position: top left
             background-repeat: no-repeat
 
         &.steps
@@ -111,6 +110,39 @@ $background-color: #15aaaa
         &.active
           .icon
             background-image: url("fitbit/active.png")
+
+        &.intensity_none, &.intensity_light, &.intensity_moderate, &.intensity_high
+
+          input
+            background-color: darken($background-color, 2%)
+
+        &.intensity_none
+          input
+            color: $intensity_none
+
+          .icon
+            background-position: 0px 0px
+
+        &.intensity_light
+          input
+            color: $intensity_light
+
+          .icon
+            background-position: -60px 0px
+
+        &.intensity_moderate
+          input
+            color: $intensity_moderate
+
+          .icon
+            background-position: -120px 0px
+
+        &.intensity_high
+          input
+            color: $intensity_high
+
+          .icon
+            background-position: -180px 0px
 
   #error
     display: none
