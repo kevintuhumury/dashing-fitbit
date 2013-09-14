@@ -102,7 +102,7 @@ The `unit_system` in the above configuration can be changed to `en_US`, `en_GB` 
 
 ## Preview
 
-![image](https://f.cloud.github.com/assets/412952/830986/889c6f7c-f191-11e2-8fa9-e114681b5f6a.png)
+![image](https://f.cloud.github.com/assets/412952/1143104/e53d029e-1d1c-11e3-8b79-421627505be9.png)
 
 ## Copyright
 
