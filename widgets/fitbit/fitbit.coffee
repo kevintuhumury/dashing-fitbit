@@ -19,8 +19,8 @@ class Dashing.Fitbit extends Dashing.Widget
 
   transformMeters: ->
     meter = $(@node).find(".meter")
-    meter.attr "data-bgcolor", "#16b5b5"
-    meter.attr "data-fgcolor", "#fff"
+    meter.attr "data-bgcolor", meter.css("background-color")
+    meter.attr "data-fgcolor", meter.css("color")
     meter.attr "data-width", "125"
     meter.attr "data-height", "120"
     meter.attr "data-thickness", ".3"
