@@ -1,6 +1,6 @@
 # Dashing widget for FITBIT®
 
-Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [Fitgem](https://github.com/whazzmaster/fitgem) gem to retrieve information from the [Fitbit API](https://dev.fitbit.com/). It displays today's steps (with the percentage of today's goal), the lifetime (total) steps, today's distance (with the percentage of today's goal), the lifetime (total) distance, today's calories burned (with the percentage of today's goal) and the very active minutes of the day. An example of some of these can be viewed [below](https://github.com/kevintuhumury/dashing-fitbit#preview)
+Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [Fitgem](https://github.com/whazzmaster/fitgem) gem to retrieve information from the [Fitbit API](https://dev.fitbit.com/). It displays today's steps (with the percentage of today's goal), the lifetime (total) steps, today's distance (with the percentage of today's goal), the lifetime (total) distance, today's calories burned (with the percentage of today's goal) and the active minutes (with the percentage of today's goal) of the day. Each view which has a goal and thus a percentage, shows the progress in a graph. These graphs and it's icon will change color depending on which percentage you've reached. An example of some of the variations can be viewed [below](https://github.com/kevintuhumury/dashing-fitbit#preview)
 
 ## Dependencies
 
@@ -69,7 +69,7 @@ To actually use the widget on your own Dashboard, you'll have to [request](https
 
 ## Usage
 
-To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy the `fitbit.png`, `fitbit-icons.png`, `active.png`, `distance.png`, `calories.png` and `steps.png` images to the `/assets/images/fitbit` directory. Put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
+To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy the `fitbit.png`, `fitbit-icons.png`, `active.png`, `distance.png`, `calories.png` and `steps.png` images to the `/assets/images/fitbit` directory. That directory probably doesn't exist, so create the `fitbit` directory in the `/assets/images/` directory first. Put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
 
 To include the widget on your dashboard, add the following snippet to the dashboard layout file:
 
@@ -99,6 +99,12 @@ date_format = "%H:%M"
 ```
 
 The `unit_system` in the above configuration can be changed to `en_US`, `en_GB` or can be removed. The fitgem will then start using the default, which is `en_US`. The `date_format` can be changed to something of your liking. It's a `DateTime`, so you could include the date also.
+
+## Color legend
+
+This widget currently has the views as shown below. Depending on your own data, the daily goal percentage (in the graph views) and thus the color of the graph (and it's icon) will vary. They'll change depending on the intensity of your activities.
+
+![legend](https://f.cloud.github.com/assets/412952/1143117/8e50ffdc-1d1f-11e3-867a-baa6b50636e4.png)
 
 ## Preview
 
