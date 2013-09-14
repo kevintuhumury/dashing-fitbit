@@ -18,17 +18,18 @@ class Dashing.Fitbit extends Dashing.Widget
     @determineView() if @visible
 
   transformMeters: ->
-    meter = $(@node).find(".meter")
-    meter.attr "data-bgcolor", meter.css("background-color")
-    meter.attr "data-fgcolor", meter.css("color")
-    meter.attr "data-width", "125"
-    meter.attr "data-height", "120"
-    meter.attr "data-thickness", ".3"
-    meter.attr "data-angleArc", "250"
-    meter.attr "data-angleOffset", "-125"
-    meter.attr "data-displayInput", "false"
-    meter.attr "data-readOnly", "true"
-    meter.knob()
+    $(@node).find(".meter").each (index, element) =>
+      meter = $(element)
+      meter.attr "data-bgcolor", meter.css("background-color")
+      meter.attr "data-fgcolor", meter.css("color")
+      meter.attr "data-width", "125"
+      meter.attr "data-height", "120"
+      meter.attr "data-thickness", ".3"
+      meter.attr "data-angleArc", "250"
+      meter.attr "data-angleOffset", "-125"
+      meter.attr "data-displayInput", "false"
+      meter.attr "data-readOnly", "true"
+      meter.knob()
 
   determineView: ->
     if @error
