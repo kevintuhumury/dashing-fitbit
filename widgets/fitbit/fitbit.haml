@@ -38,7 +38,7 @@
 
     %li(class="distance_total")
       %h2
-        %span(data-bind="distance.total")
+        %span(data-bind="distance.total | shortenedNumber")
         %span(data-bind="distance.unit" class="unit")
 
       %h3 lifetime distance
