@@ -24,7 +24,7 @@ class Fitbit
       total: total["steps"],
       goal:  percentage(summary["steps"].to_i, goals["steps"].to_i)
     }
-    steps.merge meter: meter(steps[:goal])
+    steps.merge meter: meter(steps[:goal]), intensity_class: intensity_class(steps[:goal])
   end
 
   def calories
@@ -32,7 +32,7 @@ class Fitbit
       today: summary["caloriesOut"],
       goal:  percentage(summary["caloriesOut"], goals["caloriesOut"])
     }
-    calories.merge meter: meter(calories[:goal])
+    calories.merge meter: meter(calories[:goal]), intensity_class: intensity_class(calories[:goal])
   end
 
   def distance
@@ -42,7 +42,7 @@ class Fitbit
       total: total["distance"],
       unit:  distance_unit
     }
-    distance.merge meter: meter(distance[:goal])
+    distance.merge meter: meter(distance[:goal]), intensity_class: intensity_class(distance[:goal])
   end
 
   def active
@@ -50,7 +50,7 @@ class Fitbit
       today: summary["veryActiveMinutes"],
       goal: percentage(summary["veryActiveMinutes"], goals["activeMinutes"])
     }
-    active.merge meter: meter(active[:goal])
+    active.merge meter: meter(active[:goal]), intensity_class: intensity_class(active[:goal])
   end
 
   def errors?
@@ -97,6 +97,21 @@ class Fitbit
 
   def meter(percentage)
     percentage > 100 ? 100 : percentage
+  end
+
+  def intensity_class(percentage)
+    intensity = case percentage
+    when 0..40
+      "none"
+    when 41..65
+      "light"
+    when 66..99
+      "moderate"
+    when 100
+      "high"
+    end
+
+    "intensity_#{intensity}"
   end
 
 end
