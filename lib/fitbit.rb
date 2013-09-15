@@ -2,11 +2,11 @@ require "fitgem"
 
 class Fitbit
 
-  attr_reader :client, :options
+  attr_reader :client, :options, :config
 
   def initialize(options = {})
     @options = options
-    config   = Fitgem::Client.symbolize_keys YAML.load(File.open(".fitbit.yml"))
+    @config  = Fitgem::Client.symbolize_keys YAML.load(File.open(".fitbit.yml"))
     @client  = Fitgem::Client.new config[:oauth].merge!(options)
   end
 
@@ -53,6 +53,18 @@ class Fitbit
     active.merge meter: meter(active[:goal]), intensity_class: intensity_class(active[:goal])
   end
 
+  def leaderboard
+    friends = sorted_leaderboard.map do |friend|
+      {
+        rank:   friend["rank"]["steps"],
+        steps:  friend["summary"]["steps"],
+        name:   friend["user"]["displayName"],
+        avatar: friend["user"]["avatar"],
+        style:  leaderboard_style(friend)
+      }
+    end
+  end
+
   def errors?
     client.devices.is_a?(Hash) && client.devices.has_key?("errors")
   end
@@ -89,6 +101,18 @@ class Fitbit
 
   def goals
     client.goals["goals"]
+  end
+
+  def sorted_leaderboard
+    client.leaderboard["friends"].sort { |one, other| one["rank"]["steps"] <=> other["rank"]["steps"] }.take 5
+  end
+
+  def leaderboard_style(friend)
+    me?(friend["user"]["encodedId"]) ? "me" : ""
+  end
+
+  def me?(id)
+    config[:oauth][:user_id] == id
   end
 
   def percentage(current, total)
