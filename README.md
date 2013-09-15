@@ -4,6 +4,10 @@ Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [
 
 Each view which has a goal and thus a percentage, shows the progress in a graph. These graphs and it's icon will change color depending on which percentage you've reached. For an explanation about the colors, see the [color legend](https://github.com/kevintuhumury/dashing-fitbit#color-legend). An example of some of the variations (views) can be viewed [below](https://github.com/kevintuhumury/dashing-fitbit#preview)
 
+### Fitbit leaderboard
+
+If you want to show your leaderboard on your dashboard, you might want to try out the [Fitbit Leaderboard](https://github.com/kevintuhumury/dashing-fitbit-leaderboard) widget.
+
 ## Dependencies
 
 [Fitgem](https://github.com/whazzmaster/fitgem) is a dependency of the Fitbit widget. So, add `fitgem` to the Gemfile of your Dashing dashboard:
@@ -31,6 +35,8 @@ configure do
 Now run `bundle install`.
 
 ## Authorization
+
+If you're already using the [Fitbit Leaderboard](https://github.com/kevintuhumury/dashing-fitbit-leaderboard) widget, you've already authenticated with the Fitbit API. Therefor you can skip this part of the README and continue with the '[Usage](https://github.com/kevintuhumury/dashing-fitbit#usage)' section. If not, keep on reading.
 
 To actually use the widget on your own Dashboard, you'll have to [request](https://dev.fitbit.com/apps/new) an API key and shared secret from Fitbit. The steps below will take you through the entire process.
 
@@ -72,6 +78,8 @@ To actually use the widget on your own Dashboard, you'll have to [request](https
 ## Usage
 
 To use this widget, copy `fitbit.coffee`, `fitbit.haml` and `fitbit.sass` into the `/widgets/fitbit` directory of your dashboard. Copy the `fitbit.png`, `fitbit-icons.png`, `active.png`, `distance.png`, `calories.png` and `steps.png` images to the `/assets/images/fitbit` directory. Put the `/jobs/fitbit.rb` file in the `/jobs` folder and the `lib/fitbit.rb` file into the `lib` directory. If there isn't one yet, create it.
+
+When you've already added the [Fitbit Leaderboard](https://github.com/kevintuhumury/dashing-fitbit-leaderboard) widget, you already have the `/lib/fitbit.rb` and `/assets/images/fitbit/fitbit.png` file. Don't worry about that, just replace them. They should be exactly the same.
 
 To include the widget on your dashboard, add the following snippet to the dashboard layout file:
 
