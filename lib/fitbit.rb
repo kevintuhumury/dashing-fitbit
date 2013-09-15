@@ -48,7 +48,7 @@ class Fitbit
   def active
     active = {
       today: summary["veryActiveMinutes"],
-      goal: percentage(summary["veryActiveMinutes"], goals["activeMinutes"])
+      goal:  percentage(summary["veryActiveMinutes"], goals["activeMinutes"])
     }
     active.merge meter: meter(active[:goal]), intensity_class: intensity_class(active[:goal])
   end
