@@ -3,7 +3,6 @@ class Dashing.Fitbit extends Dashing.Widget
   ready: ->
     @visible = true
     @determineView()
-    @transformMeters()
 
   onData: (data) ->
     @currentView(@index).fadeOut() if @index
@@ -40,6 +39,7 @@ class Dashing.Fitbit extends Dashing.Widget
       @dataView().show()
 
       @firstView().fadeIn @animationLength()
+      @transformMeters()
       @startAnimation()
 
   startAnimation: ->
