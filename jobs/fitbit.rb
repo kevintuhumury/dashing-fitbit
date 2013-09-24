@@ -1,7 +1,8 @@
 # widget configuration
 
-unit_system = "METRIC"
-date_format = "%H:%M"
+unit_system   = "METRIC"
+date_format   = "%H:%M"
+animate_views = true
 
 fitbit = Fitbit.new unit_system: unit_system, date_format: date_format
 
@@ -14,7 +15,8 @@ SCHEDULER.every "5m", first_in: 0 do |job|
       steps:    fitbit.steps,
       calories: fitbit.calories,
       distance: fitbit.distance,
-      active:   fitbit.active
+      active:   fitbit.active,
+      animate:  animate_views
     }
   end
 end

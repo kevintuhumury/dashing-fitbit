@@ -11,10 +11,32 @@ class Dashing.Fitbit extends Dashing.Widget
     if data.error
       @error = data.error
     else
-      @error = null
-      @index = 0
+      @animate = data.animate
+      @error   = null
+      @index   = 0
 
     @determineView() if @visible
+
+  determineView: ->
+    if @error
+      @dataView().hide()
+      @errorView().show()
+    else
+      @errorView().hide()
+      @dataView().show()
+
+      @determineViewType()
+
+      if @animate
+        @firstView().fadeIn @animationLength()
+        @transformMeters()
+        @startAnimation()
+
+  determineViewType: ->
+    if @animate
+      @dataView().removeClass("list").addClass "animate"
+    else
+      @dataView().removeClass("animate").addClass "list"
 
   transformMeters: ->
     $(@node).find(".meter").each (index, element) =>
@@ -30,17 +52,6 @@ class Dashing.Fitbit extends Dashing.Widget
       meter.attr "data-readOnly", "true"
       meter.knob()
 
-  determineView: ->
-    if @error
-      @dataView().hide()
-      @errorView().show()
-    else
-      @errorView().hide()
-      @dataView().show()
-
-      @firstView().fadeIn @animationLength()
-      @transformMeters()
-      @startAnimation()
 
   startAnimation: ->
     @interval = setInterval @animateView, 6000

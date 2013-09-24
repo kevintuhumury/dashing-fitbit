@@ -10,48 +10,48 @@
   %ul(class="views")
     %li(data-bind-class="steps.intensity_class | prepend 'steps '")
       %input(class="meter" data-bind-value="steps.meter")
-      %span(class="icon")
-      %h2(data-bind="steps.today")
-      %h3 steps
-      %h4(data-bind="steps.goal | append '% of goal'")
+      .icon
+      .value(data-bind="steps.today")
+      .label steps
+      .goal(data-bind="steps.goal | append '% of goal'")
 
     %li(class="steps_total")
-      %h2(data-bind="steps.total | shortenedNumber")
-      %h3 lifetime steps
+      .value(data-bind="steps.total | shortenedNumber")
+      .label lifetime steps
 
     %li(data-bind-class="calories.intensity_class | prepend 'calories '")
       %input(class="meter" data-bind-value="calories.meter")
-      %span(class="icon")
-      %h2(data-bind="calories.today")
-      %h3 calories
-      %h4(data-bind="calories.goal | append '% of goal'")
+      .icon
+      .value(data-bind="calories.today")
+      .label calories
+      .goal(data-bind="calories.goal | append '% of goal'")
 
     %li(data-bind-class="distance.intensity_class | prepend 'distance '")
       %input(class="meter" data-bind-value="distance.meter")
-      %span(class="icon")
-      %h2
+      .icon
+      .value
         %span(data-bind="distance.today")
         %span(data-bind="distance.unit" class="unit")
 
-      %h3 distance
-      %h4(data-bind="distance.goal | append '% of goal'")
+      .label distance
+      .goal(data-bind="distance.goal | append '% of goal'")
 
     %li(class="distance_total")
-      %h2
+      .value
         %span(data-bind="distance.total | shortenedNumber")
         %span(data-bind="distance.unit" class="unit")
 
-      %h3 lifetime distance
+      .label lifetime distance
 
     %li(data-bind-class="active.intensity_class | prepend 'active '")
       %input(class="meter" data-bind-value="active.meter")
-      %span(class="icon")
-      %h2(data-bind="active.today")
-      %h3 very active minutes
-      %h4(data-bind="active.goal | append '% of goal'")
+      .icon
+      .value(data-bind="active.today")
+      .label very active minutes
+      .goal(data-bind="active.goal | append '% of goal'")
 
 %span(id="error")
-  %h2 Uh Oh.
+  .value Uh Oh.
   %p(data-bind="error")
 
 %p(class="updated-at" data-bind="updatedAtMessage")

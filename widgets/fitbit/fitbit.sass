@@ -3,6 +3,7 @@ $intensity_none: #5ac7c8
 $intensity_light: #ff6d43
 $intensity_moderate: #ffc807
 $intensity_high: #9ade11
+$highlight: #14a1a1
 
 .widget-fitbit
   position: relative
@@ -22,7 +23,7 @@ $intensity_high: #9ade11
     span
       display: none
 
-  h2
+  .value
     display: block
     vertical-align: middle
     font-size: 60px
@@ -32,68 +33,24 @@ $intensity_high: #9ade11
     span.unit
       font-size: 20px
 
-  h3
-    width: 100%
-    text-transform: uppercase
-    font-size: 15px
-    letter-spacing: 2px
-
-  h4
-    text-transform: uppercase
-    font-size: 12px
-    font-weight: 400
-    color: lighten($background-color, 10%)
-
   #data
     display: none
 
     ul.views
-      display: inline-block
-      margin: 0
-      padding: 0
-      height: 120px
-      position: relative
-      width: 100%
 
       li
-        display: none
-        position: absolute
-        top: 5px
-        left: 0
-        margin: 0
-        padding: 0
-        width: 100%
-        height: 100%
 
-        &.steps, &.calories, &.distance, &.active
+        .label
+          width: 100%
+          text-transform: uppercase
+          font-size: 15px
+          letter-spacing: 2px
 
-          h2
-            position: absolute
-            top: 105px
-            right: 0
-            left: 0
-            font-size: 40px
-
-          h3
-            position: absolute
-            top: 160px
-            right: 0
-            left: 0
-
-          h4
-            position: absolute
-            top: 180px
-            right: 0
-            left: 0
-
-          .icon
-            position: absolute
-            top: 35px
-            left: 108px
-            display: block
-            width: 60px
-            height: 60px
-            background-repeat: no-repeat
+        .goal
+          text-transform: uppercase
+          font-size: 12px
+          font-weight: 400
+          color: lighten($background-color, 10%)
 
         &.steps
           .icon
@@ -111,43 +68,171 @@ $intensity_high: #9ade11
           .icon
             background-image: url("fitbit/active.png")
 
-        &.intensity_none, &.intensity_light, &.intensity_moderate, &.intensity_high
+    &.animate
+
+      ul.views
+        display: inline-block
+        margin: 0
+        padding: 0
+        height: 120px
+        position: relative
+        width: 100%
+
+        li
+          display: none
+          position: absolute
+          top: 5px
+          left: 0
+          margin: 0
+          padding: 0
+          width: 100%
+          height: 100%
+
+          &.steps, &.calories, &.distance, &.active
+
+            .icon
+              position: absolute
+              top: 35px
+              left: 108px
+              display: block
+              width: 60px
+              height: 60px
+              background-repeat: no-repeat
+
+            .value
+              position: absolute
+              top: 105px
+              right: 0
+              left: 0
+              font-size: 40px
+
+            .label
+              position: absolute
+              top: 160px
+              right: 0
+              left: 0
+
+            .goal
+              position: absolute
+              top: 180px
+              right: 0
+              left: 0
+
+
+          &.intensity_none, &.intensity_light, &.intensity_moderate, &.intensity_high
+            input
+              background-color: darken($background-color, 2%)
+
+          &.intensity_none
+            input
+              color: $intensity_none
+
+            .icon
+              background-position: 0px 0px
+
+          &.intensity_light
+            input
+              color: $intensity_light
+
+            .icon
+              background-position: -60px 0px
+
+          &.intensity_moderate
+            input
+              color: $intensity_moderate
+
+            .icon
+              background-position: -120px 0px
+
+          &.intensity_high
+            input
+              color: $intensity_high
+
+            .icon
+              background-position: -180px 0px
+
+    &.list
+
+      ul.views
+        position: absolute
+        top: 110px
+        left: 30px
+
+        li
+          position: relative
+          margin: 0 auto 2px
+          padding: 2px 0
+          height: 30px
+          width: 240px
+
+          &.steps, &.calories, &.distance_total
+            background-color: $highlight
 
           input
-            background-color: darken($background-color, 2%)
+            display: none
 
-        &.intensity_none
-          input
+          .icon
+            display: block
+            margin: 0 0 0 5px
+            width: 30px
+            height: 30px
+            background-repeat: no-repeat
+            background-size: 400%
+
+          .value
+            position: absolute
+            top: 2px
+            left: 40px
+            font-size: 14px
+            text-align: left
+            color: lighten($intensity_none, 20%)
+
+            span.unit
+              font-size: 9px
+
+          .label
+            position: absolute
+            bottom: 3px
+            left: 40px
+            width: 210px
+            font-size: 10px
+            font-weight: bold
+            text-align: left
+            letter-spacing: 0px
+
+          .goal
+            position: absolute
+            top: 0
+            right: 10px
+            height: 30px
+            line-height: 32px
+            font-size: 10px
             color: $intensity_none
 
-          .icon
-            background-position: 0px 0px
+          &.intensity_none
 
-        &.intensity_light
-          input
-            color: $intensity_light
+            .icon
+              background-position: 0px 0px
 
-          .icon
-            background-position: -60px 0px
+          &.intensity_light
 
-        &.intensity_moderate
-          input
-            color: $intensity_moderate
+            .icon
+              background-position: -30px 0px
 
-          .icon
-            background-position: -120px 0px
+          &.intensity_moderate
 
-        &.intensity_high
-          input
-            color: $intensity_high
+            .icon
+              background-position: -60px 0px
 
-          .icon
-            background-position: -180px 0px
+          &.intensity_high
+
+            .icon
+              background-position: -90px 0px
 
   #error
     display: none
 
-    h2
+    .value
       font-size: 40px
 
     p
