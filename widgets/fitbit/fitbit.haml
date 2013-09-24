@@ -14,6 +14,7 @@
       .value(data-bind="steps.today")
       .label steps
       .goal(data-bind="steps.goal | append '% of goal'")
+      .bar(data-bind-data-bar-width="steps.goal")
 
     %li(class="steps_total")
       .value(data-bind="steps.total | shortenedNumber")
@@ -25,6 +26,7 @@
       .value(data-bind="calories.today")
       .label calories
       .goal(data-bind="calories.goal | append '% of goal'")
+      .bar(data-bind-data-bar-width="calories.goal")
 
     %li(data-bind-class="distance.intensity_class | prepend 'distance '")
       %input(class="meter" data-bind-value="distance.meter")
@@ -35,6 +37,7 @@
 
       .label distance
       .goal(data-bind="distance.goal | append '% of goal'")
+      .bar(data-bind-data-bar-width="distance.goal")
 
     %li(class="distance_total")
       .value
@@ -49,6 +52,7 @@
       .value(data-bind="active.today")
       .label very active minutes
       .goal(data-bind="active.goal | append '% of goal'")
+      .bar(data-bind-data-bar-width="active.goal")
 
 %span(id="error")
   .value Uh Oh.

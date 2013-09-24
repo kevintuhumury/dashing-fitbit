@@ -31,6 +31,8 @@ class Dashing.Fitbit extends Dashing.Widget
         @firstView().fadeIn @animationLength()
         @transformMeters()
         @startAnimation()
+      else
+        @calculateBarWidth()
 
   determineViewType: ->
     if @animate
@@ -52,6 +54,10 @@ class Dashing.Fitbit extends Dashing.Widget
       meter.attr "data-readOnly", "true"
       meter.knob()
 
+  calculateBarWidth: ->
+    $(@node).find(".bar").each (index, element) =>
+      bar = $(element)
+      bar.width (bar.width() / 100) * bar.attr("data-bar-width")
 
   startAnimation: ->
     @interval = setInterval @animateView, 6000
