@@ -2,7 +2,9 @@
 
 Fitbit widget for [Dashing](http://shopify.github.com/dashing), which uses the [Fitgem](https://github.com/whazzmaster/fitgem) gem to retrieve information from the [Fitbit API](https://dev.fitbit.com/). It displays today's steps (with the percentage of today's goal), the lifetime (total) steps, today's distance (with the percentage of today's goal), the lifetime (total) distance, today's calories burned (with the percentage of today's goal) and the active minutes (with the percentage of today's goal) of the day.
 
-Each view which has a goal and thus a percentage, shows the progress in a graph. These graphs and it's icon will change color depending on which percentage you've reached. For an explanation about the colors, see the [color legend](https://github.com/kevintuhumury/dashing-fitbit#color-legend). An example of some of the variations (views) can be viewed [below](https://github.com/kevintuhumury/dashing-fitbit#preview)
+Each view which has a goal and thus a percentage, shows the progress in a graph. These graphs and it's icon will change color depending on which percentage you've reached.
+
+Instead of the animated (rotating) views, there also is a non-animated feature, which shows all statistics nicely fitted into a single view. To use it, you'll need to configure the widget correctly. For more information about the configuration of this widget, see [below](https://github.com/kevintuhumury/dashing-fitbit#configuration). For an explanation about the colors, see the [color legend](https://github.com/kevintuhumury/dashing-fitbit#color-legend). An example of all the variations (views) can also be viewed [below](https://github.com/kevintuhumury/dashing-fitbit#preview).
 
 ### Fitbit leaderboard
 
@@ -104,11 +106,14 @@ By default the Fitbit widget will use the Metric system and displays the last sy
 ```ruby
 # widget configuration
 
-unit_system = "METRIC"
-date_format = "%H:%M"
+unit_system   = "METRIC"
+date_format   = "%H:%M"
+animate_views = true
 ```
 
 The `unit_system` in the above configuration can be changed to `en_US`, `en_GB` or can be removed. The fitgem will then start using the default, which is `en_US`. The `date_format` can be changed to something of your liking. It's a `DateTime`, so you could include the date also.
+
+As you can see there also is a third configuration option, namely `animate_views`. When this option is set to `true`, the widget will animate (rotate) through the available statistics and will show each statistic in a separate view. When it's set to `false` it will show a single view with a list of all the available statistics. For an example of these views, see [below](https://github.com/kevintuhumury/dashing-fitbit#preview)
 
 ## Color legend
 
@@ -118,7 +123,11 @@ This widget currently has the views as shown below. Depending on your own data, 
 
 ## Preview
 
-![image](https://f.cloud.github.com/assets/412952/1143107/24563db0-1d1d-11e3-8e0c-d2ece6312a00.png)
+![fitbit-views](https://f.cloud.github.com/assets/412952/1143107/24563db0-1d1d-11e3-8e0c-d2ece6312a00.png)
+
+The above views are shown when the `animate_views` configuration option has been set to `true`. When it's set to `false`, the below (the left view) will be shown. The right view will be shown when the API call limit (currently 150 calls per hour) has been reached.
+
+![fitbit-views-more](https://f.cloud.github.com/assets/412952/1204958/64830cda-2572-11e3-9852-a36da1451944.png)
 
 ## Copyright
 
