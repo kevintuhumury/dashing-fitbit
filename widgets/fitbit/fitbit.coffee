@@ -54,6 +54,8 @@ class Dashing.Fitbit extends Dashing.Widget
       meter.attr "data-readOnly", "true"
       meter.knob()
 
+      meter.val(meter.attr("value")).trigger "change"
+
   calculateBarWidth: ->
     $(@node).find(".bar").each (index, element) =>
       bar = $(element)
