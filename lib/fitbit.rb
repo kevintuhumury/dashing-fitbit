@@ -131,7 +131,7 @@ class Fitbit
       "light"
     when 66..99
       "moderate"
-    when 100
+    else
       "high"
     end
 
