@@ -92,7 +92,7 @@ class Fitbit
   end
 
   def distance_unit
-    @distnace_unit ||= (client.user_info["user"]["distanceUnit"] == "en_US" ? "miles" : "km")
+    @distance_unit ||= (client.user_info["user"]["distanceUnit"] == "en_US" ? "miles" : "km")
   end
 
   def distance_today
