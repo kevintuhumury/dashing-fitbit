@@ -66,29 +66,33 @@ class Fitbit
   end
 
   def errors?
-    client.devices.is_a?(Hash) && client.devices.has_key?("errors")
+    devices.is_a?(Hash) && devices.has_key?("errors")
   end
 
   def error
-    client.devices["errors"].first["message"]
+    devices["errors"].first["message"]
   end
 
   private
 
+  def devices
+    @devices ||= client.devices
+  end
+
   def current_device
-    client.devices.first
+    devices.first
   end
 
   def today
-    client.activities_on_date("today")
+    @today ||= client.activities_on_date("today")
   end
 
   def total
-    client.activity_statistics["lifetime"]["total"]
+    @total ||= client.activity_statistics["lifetime"]["total"]
   end
 
   def distance_unit
-    client.user_info["user"]["distanceUnit"] == "en_US" ? "miles" : "km"
+    @distnace_unit ||= (client.user_info["user"]["distanceUnit"] == "en_US" ? "miles" : "km")
   end
 
   def distance_today
@@ -100,11 +104,11 @@ class Fitbit
   end
 
   def goals
-    client.goals["goals"]
+    @goals ||= client.goals["goals"]
   end
 
   def sorted_leaderboard
-    client.leaderboard["friends"].sort { |one, other| one["rank"]["steps"] <=> other["rank"]["steps"] }.take 5
+    @sorted_leaderboard ||= client.leaderboard["friends"].sort { |one, other| one["rank"]["steps"] <=> other["rank"]["steps"] }.take 5
   end
 
   def leaderboard_style(friend)
